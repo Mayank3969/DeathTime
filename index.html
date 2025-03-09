@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Remaining</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Time Remaining</h1>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle dark/light mode">
+                    <svg class="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+                    <svg class="dark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="tab-navigation">
+            <button id="calendar-tab" class="tab-btn active">Calendar</button>
+            <button id="life-tab" class="tab-btn">Life</button>
+            <button id="custom-tab" class="tab-btn">Custom Date</button>
+        </div>
+
+        <main>
+            <div id="calendar-counter" class="counter-section active">
+                <h2>Time Remaining</h2>
+                <div class="calendar-options">
+                    <button id="day-option" class="calendar-option active">Today</button>
+                    <button id="month-option" class="calendar-option">This Month</button>
+                    <button id="year-option" class="calendar-option">This Year</button>
+                </div>
+                <div class="result-display">
+                    <div class="time-unit">
+                        <span id="calendar-days" class="number">0</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="calendar-hours" class="number">0</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="calendar-minutes" class="number">0</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="calendar-seconds" class="number">0</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="life-counter" class="counter-section">
+                <h2>Life Countdown</h2>
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="birth-date">Your Birth Date:</label>
+                        <input type="date" id="birth-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="death-date">Expected End Date:</label>
+                        <input type="date" id="death-date">
+                    </div>
+                    <button id="calculate-life" class="calculate-btn">Calculate</button>
+                </div>
+                <div id="life-results" class="result-display" style="display: none;">
+                    <div class="time-summary">
+                        <div class="time-card">
+                            <h3>Time Lived</h3>
+                            <p id="time-lived-display" class="time-combined">0 years, 0 days</p>
+                        </div>
+                        <div class="time-card">
+                            <h3>Time Remaining</h3>
+                            <p id="time-remaining-display" class="time-combined">0 years, 0 days</p>
+                        </div>
+                    </div>
+                    <button id="recalculate-life" class="secondary-btn">Recalculate</button>
+                </div>
+            </div>
+
+            <div id="custom-counter" class="counter-section">
+                <h2>Custom Countdown</h2>
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="target-date">Target Date:</label>
+                        <input type="datetime-local" id="target-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" id="event-name" placeholder="e.g., Vacation, Deadline">
+                    </div>
+                    <button id="calculate-custom" class="calculate-btn">Start</button>
+                </div>
+                <div class="result-display">
+                    <h3 id="event-display">Countdown</h3>
+                    <div class="time-unit">
+                        <span id="custom-days" class="number">0</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="custom-hours" class="number">0</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="custom-minutes" class="number">0</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="custom-seconds" class="number">0</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made by Mayank | 2025</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
